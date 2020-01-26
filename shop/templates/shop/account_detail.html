@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="border">
+    <h2>{{ account.name }}</h2>
+    <p>{{ account.phone }}</p>
+    <p>{{ account.address }}</p>
+
+    <hr/>
+    <p>거래 상품 목록</p>
+    {% for item in account.items.all %}
+        <div><a href="{% url 'item_detail' item.pk %}">{{ item.name }}</a></div>
+    {% endfor %}
+    </div>
+
+    <a href="{% url 'account_edit' account.pk%}">
+        <button type="button">수정</button>
+    </a>
+    <form action="{% url 'account_delete' account.pk %}" method="post">
+    {% csrf_token %}
+        <input type="submit" value="삭제"/>
+    </form>
+    <a href="{% url 'account_list' %}">
+        <button type="button">목록</button>
+    </a>
+{% endblock %}

@@ -1,24 +1,33 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+    <div class="container">
+    <div class="col w-100 border">
     {% csrf_token %}
 
     {% if item.photo %}
-         <div><img src="{{ item.photo.url }}"/></div>
+         <div><img src="{{ item.photo.url }}" width="50%" height="50%"/></div>
     {% endif %}
-    <h2>{{ item.name }}</h2>
+    <h3>{{ item.name }}</h3>
     <p>가격 : {{ item.price }}</p>
     <p>남은 수량 : {{ item.count }}</p>
     <p>제품 설명 : {{ item.desc }}</p>
-    <dev><a href="">거래처 : {{ item.account }}</a></dev>
+    <dev><a href="{% url 'account_detail' item.account.id %}">거래처 : {{ item.account }}</a></dev>
+    </div>
 
     <br/>
     <a href="{% url 'item_edit' item.pk%}">
         <button type="button">수정</button>
     </a>
-    <br/>
+
+    <form action="{% url 'item_delete' item.pk%}" method="post">
+        {% csrf_token %}
+        <input type="submit" value ="삭제">
+    </form>
+
     <a href="{% url 'item_list' %}">
         <button type="button">목록</button>
     </a>
 
+    </div>
 {% endblock %}

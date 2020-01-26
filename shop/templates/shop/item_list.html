@@ -2,14 +2,27 @@
 
 {% block content %}
 {% csrf_token %}
+<div class="container">
+<div class="row">
 {% for item in items %}
+    <div class="col-md-4 border">
     {% if item.photo %}
-         <div><img src="{{ item.photo.url }}"/></div>
+         <div><img src="{{ item.photo.url }}" width="100%" height="100%"/></div>
     {% endif %}
     <div>
         <a href="{% url 'item_detail' item.pk %}">{{ item.name }}</a>
     </div>
+    <p>가격: {{ item.price }}</p>
+    <p>남은 수량: {{ item.count }}</p>
 
+    <form action="{% url 'item_count' item.pk%}" method="post">
+    {% csrf_token %}
+        <input type="submit" value="-" name="count">
+        <input type="submit" value="+" name="count">
+    </form>
+    </div>
 {% endfor %}
+</div>
+</div>
 
 {% endblock %}

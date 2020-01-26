@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>거래처 등록</h2>
+    <form action="{% url 'account_edit' account.pk%}" method="post">
+    {% csrf_token%}
+        <p>이름: <input type="text" name="name" value="{{ account.name }}"></p>
+        <p>전화번호: <input type="text" name="phone" value="{{ account.phone }}"></p>
+        <p>주소: <input type="text" name="address" value="{{ account.address }}"></p>
+
+        <input type="submit" value="등록"/>
+    </form>
+{% endblock %}

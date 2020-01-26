@@ -2,12 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<a href="{% url 'item_new' %}">상품 등록</a>
+    <title>Piro12</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        a{
+            text-decoration: none;
+            color: lightseagreen;
+            font-weight: bold;
+        }
+        footer{
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-size: 10px;
+        }
+        footer div{
+            padding: 20px 0;
+        }
+        .out_container{
+            width: 100%;
+        }
+        .block_content {
+            padding: 2% 20%;
+            height: 600px;
+        }
+
+    </style>
+</head>
+
+
+<body>
+<div class="out_container">
+<nav class="navbar navbar-light bg-light">
+  <a href="{% url 'item_list' %}">
+    <img src="../../media/piro.jpg" width="50" height="50"/>
+  </a>
+
+  <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'item_new' %}">상품 등록</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'account_new' %}">거래처 등록</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'account_list' %}">거래처 관리</a>
+  </li>
+
+</ul>
+</nav>
+
+<div class="block_content">
 {% block content %}
 {% endblock %}
+</div>
+
+<footer>
+    <div>
+        <p>©피로그래밍|회장:정성모</p>
+        <p>서울특별시 관악구 관악로 1, 서울대학교 벤처경영 교육 및 연구 동아리</p>
+    </div>
+</footer>
+</div>
 </body>
 </html>
