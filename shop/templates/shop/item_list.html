@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% csrf_token %}
+{% for item in items %}
+    {% if item.photo %}
+         <div><img src="{{ item.photo.url }}"/></div>
+    {% endif %}
+    <div>
+        <a href="{% url 'item_detail' item.pk %}">{{ item.name }}</a>
+    </div>
+
+{% endfor %}
+
+{% endblock %}
